@@ -3,177 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pickles' Trinkets</title>
+    <title>Pickles' Trinkets - Home</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #FFEFEF;
-            color: #333;
-            text-align: center;
-        }
-        header {
-            background-color: #FFC0CB;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        .product-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .product {
-            background: #FFF;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-        .product:hover {
-            transform: scale(1.05);
-        }
-        button {
-            background-color: #FFB6C1;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #FF69B4;
-        }
-        #checkout-form {
-            display: none;
-            background: #FFF;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 20px auto;
-        }
-        input {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        #cart-items {
-            list-style: none;
-            padding: 0;
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <header>
-        <h1>Pickles' Trinkets</h1>
+        <h1>Welcome to Pickles' Trinkets!</h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#cart">Cart</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
             </ul>
         </nav>
     </header>
-    
-    <section id="shop" class="product-grid">
-        <div class="product">
-            <img src="sticker1.png" alt="Cute Sticker">
-            <h2>Sticker 1</h2>
-            <p>$5.00</p>
-            <button onclick="addToCart('Sticker 1', 5.00)">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="claypin1.png" alt="Clay Pin">
-            <h2>Clay Pin 1</h2>
-            <p>$8.00</p>
-            <button onclick="addToCart('Clay Pin 1', 8.00)">Add to Cart</button>
-        </div>
-        <!-- More products here -->
+
+    <section id="hero">
+        <h2>Handmade Trinkets Inspired by Cute Indie Games</h2>
+        <p>Explore our collection of adorable stickers, clay pins, keychains, and prints!</p>
+        <a href="shop.html"><button>Shop Now</button></a>
     </section>
-    
-    <section id="cart">
-        <h2>Shopping Cart</h2>
-        <button onclick="toggleCart()">View Cart</button>
-        <ul id="cart-items"></ul>
-        <p>Total: $<span id="total-price">0.00</span></p>
-        <button id="checkout">Checkout</button>
+
+    <section id="about-preview">
+        <h3>About Us</h3>
+        <p>Pickles' Trinkets brings you hand-crafted, whimsical items that celebrate the charm of indie video games. Each piece is designed with love to add a little fun to your life!</p>
+        <a href="about.html"><button>Learn More</button></a>
     </section>
-    
-    <section id="checkout-form">
-        <h2>Checkout</h2>
-        <input type="text" id="name" placeholder="Full Name" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="text" id="address" placeholder="Shipping Address" required>
-        <button id="confirm-order">Confirm Order</button>
-    </section>
-    
-    <script>
-        let cart = [];
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCart();
-        }
-
-        function updateCart() {
-            const cartList = document.getElementById('cart-items');
-            const totalPrice = document.getElementById('total-price');
-            cartList.innerHTML = '';
-            let total = 0;
-            cart.forEach((item, index) => {
-                const li = document.createElement('li');
-                li.innerText = `${item.name} - $${item.price.toFixed(2)}`;
-                const deleteButton = document.createElement('button');
-                deleteButton.innerText = 'Remove';
-                deleteButton.onclick = () => removeFromCart(index);
-                li.appendChild(deleteButton);
-                cartList.appendChild(li);
-                total += item.price;
-            });
-            totalPrice.innerText = total.toFixed(2);
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        function toggleCart() {
-            const cartList = document.getElementById('cart-items');
-            cartList.style.display = cartList.style.display === 'none' ? 'block' : 'none';
-        }
-
-        document.getElementById('checkout').addEventListener('click', () => {
-            document.getElementById('checkout-form').style.display = 'block';
-        });
-
-        document.getElementById('confirm-order').addEventListener('click', () => {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const address = document.getElementById('address').value;
-            
-            if (name && email && address) {
-                alert(`Thank you for your order, ${name}! A confirmation email will be sent to ${email}.`);
-                cart = [];
-                updateCart();
-                document.getElementById('checkout-form').style.display = 'none';
-            } else {
-                alert('Please fill in all the fields.');
-            }
-        });
-    </script>
+    <footer>
+        <p>&copy; 2025 Pickles' Trinkets. All rights reserved.</p>
+    </footer>
 </body>
 </html>
