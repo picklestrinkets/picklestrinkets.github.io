@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickles' Trinkets - Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pickles' Trinkets - Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="shop" class="product-grid">
+        <!-- Example product items, you can modify/add more products as needed -->
+        <div class="product">
+            <img src="sticker1.png" alt="Cute Sticker">
+            <h2>Sticker 1</h2>
+            <p>$5.00</p>
+            <button onclick="addToCart('Sticker 1', 5.00)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="claypin1.png" alt="Clay Pin">
+            <h2>Clay Pin 1</h2>
+            <p>$8.00</p>
+            <button onclick="addToCart('Clay Pin 1', 8.00)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="keychain1.png" alt="Keychain 1">
+            <h2>Keychain 1</h2>
+            <p>$4.00</p>
+            <button onclick="addToCart('Keychain 1', 4.00)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="print1.png" alt="Print 1">
+            <h2>Print 1</h2>
+            <p>$10.00</p>
+            <button onclick="addToCart('Print 1', 10.00)">Add to Cart</button>
+        </div>
+        <!-- Add more product sections here -->
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Pickles' Trinkets. All rights reserved.</p>
+    </footer>
+</body>
+</html>
